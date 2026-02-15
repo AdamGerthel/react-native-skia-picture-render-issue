@@ -18,7 +18,7 @@ export default function App() {
   }, []);
 
   const handleSetRandomValue = () => {
-    setRandomValue(Math.random());
+    setRandomValue(Math.floor(Math.random() * 100));
   };
 
   return (
@@ -31,7 +31,7 @@ export default function App() {
             style={styles.button}
             onPress={handleSetRandomValue}
           >
-            <Text>Regenerate button background</Text>
+            <Text>Regenerate button backgrounds</Text>
           </TouchableOpacity>
           <ButtonBackground
             key={randomValue + 2}
@@ -63,6 +63,34 @@ export default function App() {
           />
           <ButtonBackground
             key={randomValue + 6}
+            height={40}
+            width={200}
+            sideWidth={25}
+            tint="#000"
+          />
+          <ButtonBackground
+            key={randomValue + 7}
+            height={40}
+            width={200}
+            sideWidth={25}
+            tint="#000"
+          />
+          <ButtonBackground
+            key={randomValue + 8}
+            height={40}
+            width={200}
+            sideWidth={25}
+            tint="#000"
+          />
+          <ButtonBackground
+            key={randomValue + 9}
+            height={40}
+            width={200}
+            sideWidth={25}
+            tint="#000"
+          />
+          <ButtonBackground
+            key={randomValue + 10}
             height={40}
             width={200}
             sideWidth={25}

@@ -15,16 +15,6 @@ import {
   LINE_ORIGINAL_WIDTH,
 } from "../../../../assets/graphics/skia-images";
 
-function getSideVariant(number: number) {
-  if (number < 0.3333) {
-    return 0;
-  } else if (number < 0.6666) {
-    return 1;
-  }
-
-  return 2;
-}
-
 const ButtonBackground = memo(function ButtonBackground({
   width,
   height,
@@ -37,16 +27,12 @@ const ButtonBackground = memo(function ButtonBackground({
   tint?: string | undefined;
 }) {
   const { cachedImages } = skiaImageCache;
-  const randomNumberA = useRef(Math.random()).current;
-  const randomNumberB = useRef(Math.random()).current;
-  const topOffset = (randomNumberA * LINE_ORIGINAL_WIDTH) / 9;
-  const bottomOffset = (randomNumberB * LINE_ORIGINAL_WIDTH) / 9;
-  const sideLeftVariantIndex = getSideVariant(randomNumberA);
-  const sideRightVariantIndex = getSideVariant(randomNumberB);
+  const sideLeftVariantIndex = 0;
+  const sideRightVariantIndex = 0;
   const roundedSideWidth = PixelRatio.roundToNearestPixel(sideWidth);
   const picture = useMemo(() => {
     if (!cachedImages) {
-      return;
+      throw new Error("No cached images");
     }
 
     return createPicture(
@@ -127,13 +113,13 @@ const ButtonBackground = memo(function ButtonBackground({
         canvas.drawImageRect(
           cachedImages.lineTop,
           {
-            x: topOffset,
+            x: 0,
             y: 0,
             width: LINE_ORIGINAL_WIDTH,
             height: LINE_ORIGINAL_HEIGHT,
           },
           {
-            x: roundedSideWidth - topOffset,
+            x: roundedSideWidth,
             y: 0,
             width: lineImageWidth,
             height: lineImageHeight,
@@ -163,7 +149,7 @@ const ButtonBackground = memo(function ButtonBackground({
             height: LINE_ORIGINAL_HEIGHT,
           },
           {
-            x: roundedSideWidth - bottomOffset,
+            x: roundedSideWidth,
             y: height - lineImageHeight,
             width: lineImageWidth,
             height: lineImageHeight,
@@ -205,18 +191,12 @@ const ButtonBackground = memo(function ButtonBackground({
     tint,
   ]);
 
-  useEffect(() => {
-    if (!cachedImages) {
-      skiaImageCache.generateCache();
-    }
-  }, [cachedImages]);
-
   if (!picture) {
-    console.warn("No picture");
+    console.error("No picture");
   }
 
   if (!cachedImages) {
-    console.warn("No cached images");
+    console.error("No cached images");
   }
 
   console.log("Rendering button background", {
