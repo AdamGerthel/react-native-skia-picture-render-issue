@@ -243,12 +243,7 @@ const ButtonBackground = memo(function ButtonBackground({
 });
 
 const style = StyleSheet.create({
-  container: {
-    position: "absolute",
-    zIndex: -1,
-    top: 0,
-    left: 0,
-  },
+  container: {},
 });
 
 export default ButtonBackground;

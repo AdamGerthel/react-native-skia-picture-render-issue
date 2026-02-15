@@ -1,8 +1,8 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import { Button } from "./src/components/button/button";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useEffect, useState } from "react";
 import { skiaImageCache } from "./assets/graphics/skia-images";
+import ButtonBackground from "./src/components/button/button-background/button-background";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,56 +27,46 @@ export default function App() {
         <Text>Loading...</Text>
       ) : (
         <>
-          <Text>Random value: {randomValue}</Text>
-          <Button
-            key={randomValue + 1}
-            label="Button example 1"
+          <TouchableOpacity
+            style={styles.button}
             onPress={handleSetRandomValue}
-          />
-          <Button
+          >
+            <Text>Regenerate button background</Text>
+          </TouchableOpacity>
+          <ButtonBackground
             key={randomValue + 2}
-            label="Button example 2"
-            onPress={handleSetRandomValue}
+            height={40}
+            width={200}
+            sideWidth={25}
+            tint="#000"
           />
-          <Button
+          <ButtonBackground
             key={randomValue + 3}
-            label="Button example 3"
-            onPress={handleSetRandomValue}
+            height={40}
+            width={200}
+            sideWidth={25}
+            tint="#000"
           />
-          <Button
+          <ButtonBackground
             key={randomValue + 4}
-            label="Button example 4"
-            onPress={handleSetRandomValue}
+            height={40}
+            width={200}
+            sideWidth={25}
+            tint="#000"
           />
-          <Button
+          <ButtonBackground
             key={randomValue + 5}
-            label="Button example 5"
-            onPress={handleSetRandomValue}
+            height={40}
+            width={200}
+            sideWidth={25}
+            tint="#000"
           />
-          <Button
+          <ButtonBackground
             key={randomValue + 6}
-            label="Button example 6"
-            onPress={handleSetRandomValue}
-          />
-          <Button
-            key={randomValue + 7}
-            label="Button example 7"
-            onPress={handleSetRandomValue}
-          />
-          <Button
-            key={randomValue + 8}
-            label="Button example 8"
-            onPress={handleSetRandomValue}
-          />
-          <Button
-            key={randomValue + 9}
-            label="Button example 9"
-            onPress={handleSetRandomValue}
-          />
-          <Button
-            key={randomValue + 10}
-            label="Button example 10"
-            onPress={handleSetRandomValue}
+            height={40}
+            width={200}
+            sideWidth={25}
+            tint="#000"
           />
         </>
       )}
@@ -92,5 +82,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  button: {
+    padding: 10,
+    backgroundColor: "blueviolet",
+    borderRadius: 5,
+    marginBottom: 20,
+    marginTop: 20,
   },
 });
