@@ -211,6 +211,21 @@ const ButtonBackground = memo(function ButtonBackground({
     }
   }, [cachedImages]);
 
+  if (!picture) {
+    console.warn("No picture");
+  }
+
+  if (!cachedImages) {
+    console.warn("No cached images");
+  }
+
+  console.log("Rendering button background", {
+    width,
+    height,
+    sideWidth,
+    tint,
+  });
+
   return (
     <Canvas
       pointerEvents="none"

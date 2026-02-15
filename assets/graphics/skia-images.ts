@@ -25,10 +25,6 @@ const lineBottom = require('./line-bottom.png') as string
 const lineTop = require('./line-top.png') as string
 
 export class SkiaImageCache {
-  constructor() {
-    this.generateCache()
-  }
-
   isCaching: boolean = false
 
   cachedImages?: {
@@ -47,10 +43,14 @@ export class SkiaImageCache {
       throw new Error('Failed to load image')
     }
 
+    console.log('Image cached successfully', uri)
+
     return image
   }
 
   async generateCache() {
+    console.log('Starting to cache images')
+
     if (this.isCaching) {
       return
     }
@@ -71,6 +71,8 @@ export class SkiaImageCache {
     } catch (error) {
       console.error(error)
     }
+
+    console.log('Images cached successfully')
 
     this.isCaching = false
   }
