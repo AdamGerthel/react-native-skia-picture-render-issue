@@ -6,10 +6,11 @@
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "prebuild:clean": "rm -rf ./ios && rm -rf ./android"
   },
   "dependencies": {
-    "@shopify/react-native-skia": "2.2.12",
+    "@shopify/react-native-skia": "^2.4.21",
     "expo": "~54.0.33",
     "expo-status-bar": "~3.0.9",
     "react": "19.1.0",
