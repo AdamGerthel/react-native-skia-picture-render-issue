@@ -3,7 +3,7 @@ import { StyleSheet, type ViewStyle } from 'react-native'
 const distance = 10
 
 const colors = {
-  white: '#fff'
+  white: '#CCC'
 }
 
 const fonts = {
